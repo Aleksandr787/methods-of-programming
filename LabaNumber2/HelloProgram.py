@@ -5,6 +5,8 @@ from sys import stderr, stdin
 
 
 def name_safe_validate(name: str):
+    if len(name.strip()) == 0:
+        raise Exception("Error: name does not exist!")
     if not name.isalpha():
         raise Exception("Error: name must begin with a letter!")
     if not name[0].isupper():
