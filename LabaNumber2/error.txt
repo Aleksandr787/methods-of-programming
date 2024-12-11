@@ -1,5 +1,0 @@
-Error for 'aleksandr': The name doesn't follow the rules
-Error for 'alex2033': The name doesn't follow the rules
-Error for '12232': The name doesn't follow the rules
-Error for '': The name doesn't follow the rules
-Error for 'fs123s': The name doesn't follow the rules
