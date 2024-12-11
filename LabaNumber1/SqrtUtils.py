@@ -1,32 +1,36 @@
-#!/usr/bin/python3
-
 from math import sqrt
 from sys import stderr
 
 
-def calculate_sqrt(output_file):
-    input_value = input()
+class MathSafeUtil:
 
-    if not input_value:
-        raise Exception("Data does not exist")
-    try:
-        number = float(input_value)
-    except ValueError:
-        raise Exception("Program taking only a number!")
-    if number < 0:
-        raise Exception("Can't take the sqrt of a negative number")
+    @staticmethod
+    def calculate_sqrt(x: int) -> float:
+        if x < 0:
+            raise Exception("Can't take the sqrt of a negative number")
 
-    write_safe_number_to_file(output_file, number)
+        return sqrt(x)
 
 
-def write_safe_number_to_file(output_file, safe_number):
+class File:
+
+    @staticmethod
+    def write_to_file(output_file: str, number: int):
+        with open(output_file, "a") as file:
+            print(sqrt(number), file=file)
+
+
+def write_to_file(output_file, number):
     with open(output_file, "a") as file:
-        print(sqrt(safe_number), file=file)
+        print(sqrt(number), file=file)
 
 
 def main():
+    x = int(input())
+    output_file = "output.txt"
     try:
-        calculate_sqrt("output.txt")
+        x_sqrt = MathSafeUtil.calculate_sqrt(x)
+        write_to_file(output_file, x_sqrt)
     except Exception as e:
         print("Error: " + str(e), file=stderr)
         exit(1)
