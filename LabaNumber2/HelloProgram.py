@@ -25,7 +25,6 @@ class HelloModes:
 
             self.__hello_mode_file_internal(name_list, errors)
 
-            # Записываем ошибки в файл, если они есть
             if errors:
                 with open('error.txt', 'w') as error_file:
                     for error in errors:
