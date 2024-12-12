@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from sys import stderr, stdin
 
 
@@ -26,7 +27,7 @@ class HelloModes:
             self.__hello_mode_file_internal(name_list, errors)
 
             if errors:
-                with open('error.txt', 'w') as error_file:
+                with open('errors.txt', 'w') as error_file:
                     for error in errors:
                         error_file.write(error + '\n')
 
@@ -72,7 +73,7 @@ def main():
     hello_modes = HelloModes()
 
     if mode == "file":
-        filepath = "name_list.txt"
+        filepath = "names.txt"
         hello_modes.hello_mode_file(filepath)
     elif mode == "console":
         hello_modes.hello_mode_console()
