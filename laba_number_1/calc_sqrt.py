@@ -23,7 +23,7 @@ class File:
 
 def write_to_file(output_file, number):
     with open(output_file, "a") as file:
-        print(sqrt(number), file=file)
+        print(number, file=file)
 
 
 def main():
@@ -31,6 +31,7 @@ def main():
     output_file = "output.txt"
     try:
         x_sqrt = MathSafeUtil.calculate_sqrt(x)
+        print(x_sqrt)
         write_to_file(output_file, x_sqrt)
     except Exception as e:
         print("Error: " + str(e), file=stderr)
