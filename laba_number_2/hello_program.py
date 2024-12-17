@@ -17,38 +17,35 @@ class ValidateUtil:
 
 
 class HelloModes:
-    def hello_mode_file(self, filepath: str):
-        errors = []
+    def hello_mode_pipeline(self):
+        # errors = []
 
         try:
-            with open(filepath, 'r') as file:
-                name_list = [line.strip() for line in file]
+            name_list = [line.strip() for line in stdin]
 
-            self.__hello_mode_file_internal(name_list, errors)
+            self.__hello_mode_validate_names_from_pipeline(name_list)
 
-            if errors:
-                with open('errors.txt', 'w') as error_file:
-                    for error in errors:
-                        error_file.write(error + '\n')
+            # if len(errors) != 0:
+            #     with open('errors.txt', 'w') as error_file:
+            #         for error in errors:
+            #             error_file.write(error + '\n')
 
-        except FileNotFoundError:
-            print(f"Error: The file '{filepath}' was not found.", file=stderr)
         except Exception as e:
             print(f"Error: {str(e)}", file=stderr)
 
-    def hello_mode_console(self):
-        name_list = []
+    def hello_mode_tty(self):
         try:
-            for line in stdin:
-                name_list.append(line.strip())
+            while True:
+                print("What is your name?")
+                
+                name = stdin.readline().strip()
 
-            self.__hello_mode_console_internal(name_list)
+                self.__hello_mode_validate_name_from_tty(name)
         except KeyboardInterrupt:
             print("\nGoodbye!")
 
     @staticmethod
-    def __hello_mode_console_internal(name_list: list[str]):
-        for name in name_list:
+    def __hello_mode_validate_name_from_tty(name: str):
             try:
                 if not ValidateUtil.name_validate(name):
                     raise Exception("The name doesn't follow the rules")
@@ -57,28 +54,26 @@ class HelloModes:
                 print(f"Error: {str(e)}", file=stderr)
 
     @staticmethod
-    def __hello_mode_file_internal(name_list: list[str], errors: list[str]):
+    def __hello_mode_validate_names_from_pipeline(name_list: list[str]):
         for name in name_list:
             try:
                 if not ValidateUtil.name_validate(name):
                     raise Exception("The name doesn't follow the rules")
                 print(f"Nice to see you {name}!")
             except Exception as e:
-                error_message = f"Error for '{name}': {str(e)}"
-                errors.append(error_message)
+                # error_message = f"Error for '{name}': {str(e)}"
+                # errors.append(error_message)
+                print(f"Error: {str(e)}", file=stderr)
+
 
 
 def main():
-    mode = input("Choose mode: 'file' or 'console' ").strip().lower()
     hello_modes = HelloModes()
 
-    if mode == "file":
-        filepath = "names.txt"
-        hello_modes.hello_mode_file(filepath)
-    elif mode == "console":
-        hello_modes.hello_mode_console()
-    else:
-        raise Exception("Error: Invalid mode selected.")
+    if stdin.isatty():
+       return hello_modes.hello_mode_tty()
+    
+    return hello_modes.hello_mode_pipeline()
 
 
 if __name__ == "__main__":
