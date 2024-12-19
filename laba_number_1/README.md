@@ -1,12 +1,5 @@
 # Лабораторная работа №1
 
-
-## Содержание
-
-1. [Файл `generate.py`](#generate.py)
-2. [Файл `calc_ratio.py`](#calc_ratio.py)
-3. [Файл `calc_sqrt.py`](#calc_sqrt.py)
-
 ## Файл `generate.py`
 
 Команда для выполнения:
