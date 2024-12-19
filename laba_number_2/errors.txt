@@ -1,10 +1,5 @@
-Error: The name doesn't follow the rules
-Error: The name doesn't follow the rules
-Error: The name doesn't follow the rules
-Error: The name doesn't follow the rules
-Error: The name doesn't follow the rules
-Error: The name doesn't follow the rules
-Error: The name doesn't follow the rules
-Error: The name doesn't follow the rules
-Error: The name doesn't follow the rules
-Error: The name doesn't follow the rules
+Error: Имя должно начинаться с большой буквы
+Error: Имя содержит недопустимые символы!
+Error: Имя содержит недопустимые символы!
+Error: Empty line!
+Error: Имя содержит недопустимые символы!

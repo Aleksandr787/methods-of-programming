@@ -5,16 +5,13 @@ from sys import stderr, stdin
 class ValidateUtil:
 
     @staticmethod
-    def name_validate(name: str) -> bool:
+    def name_validate(name: str):
         if len(name.strip()) == 0:
-            return False
+            raise Exception("Empty line!")
         if not name.isalpha():
-            return False
+            raise Exception("Имя содержит недопустимые символы!")
         if not name[0].isupper():
-            return False
-
-        return True
-
+            raise Exception("Имя должно начинаться с большой буквы")
 
 class HelloModes:
     def hello_mode_pipeline(self):
@@ -57,8 +54,7 @@ class HelloModes:
     def __hello_mode_validate_names_from_pipeline(name_list: list[str]):
         for name in name_list:
             try:
-                if not ValidateUtil.name_validate(name):
-                    raise Exception("The name doesn't follow the rules")
+                ValidateUtil.name_validate(name)
                 print(f"Nice to see you {name}!")
             except Exception as e:
                 # error_message = f"Error for '{name}': {str(e)}"
