@@ -13,6 +13,7 @@ class ValidateUtil:
         if not name[0].isupper():
             raise Exception("Имя должно начинаться с большой буквы")
 
+
 class HelloModes:
     def hello_mode_pipeline(self):
         # errors = []
@@ -34,7 +35,7 @@ class HelloModes:
         try:
             while True:
                 print("What is your name?")
-                
+
                 name = stdin.readline().strip()
 
                 self.__hello_mode_validate_name_from_tty(name)
@@ -43,12 +44,12 @@ class HelloModes:
 
     @staticmethod
     def __hello_mode_validate_name_from_tty(name: str):
-            try:
-                if not ValidateUtil.name_validate(name):
-                    raise Exception("The name doesn't follow the rules")
-                print(f"Nice to see you {name}!")
-            except Exception as e:
-                print(f"Error: {str(e)}", file=stderr)
+        try:
+            if not ValidateUtil.name_validate(name):
+                raise Exception("The name doesn't follow the rules")
+            print(f"Nice to see you {name}!")
+        except Exception as e:
+            print(f"Error: {str(e)}", file=stderr)
 
     @staticmethod
     def __hello_mode_validate_names_from_pipeline(name_list: list[str]):
@@ -62,13 +63,12 @@ class HelloModes:
                 print(f"Error: {str(e)}", file=stderr)
 
 
-
 def main():
     hello_modes = HelloModes()
 
     if stdin.isatty():
-       return hello_modes.hello_mode_tty()
-    
+        return hello_modes.hello_mode_tty()
+
     return hello_modes.hello_mode_pipeline()
 
 
