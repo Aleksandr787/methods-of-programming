@@ -1,4 +1,4 @@
-name: pre-commit
+name: tests-coverage-100%
 
 on:
   push:
