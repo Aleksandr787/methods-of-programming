@@ -22,4 +22,4 @@ jobs:
           pip install pytest pytest-cov
       - name: Run tests with coverage 100%
         run: |
-          python -m pytest --cov=. --cov-fail-under=100
+          cd laba_number_3 && python -m pytest --cov=. --cov-fail-under=100
